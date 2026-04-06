@@ -1,0 +1,19 @@
+[target.riscv32imc-esp-espidf]
+linker = "ldproxy"
+# This tells Cargo: "Don't run this locally, use espflash to send it to the chip"
+runner = "espflash flash --monitor"
+rustflags = [
+    "-C", "link-arg=--ldproxy-linker=riscv32-esp-elf-gcc",
+    "--cfg", "espidf_time64",
+]
+
+[build]
+target = "riscv32imc-esp-espidf"
+
+[unstable]
+build-std = ["std", "panic_abort"]
+
+[env]
+MCU = "esp32c3"
+ESP_IDF_TOOLS = "global"
+ESP_IDF_VERSION = "v5.1.3"
