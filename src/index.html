@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Sunrise Lamp</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #000; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #1c1c1e; padding: 2rem; border-radius: 20px; width: 80%; max-width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { font-weight: 300; margin-bottom: 2rem; color: #ffd60a; }
+        input[type="time"] { background: #2c2c2e; border: none; color: #fff; font-size: 2.5rem; padding: 10px; border-radius: 12px; width: 100%; text-align: center; margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: #8e8e93; }
+        .slider { width: 100%; height: 15px; border-radius: 10px; background: linear-gradient(to right, #ff9f0a, #64d2ff); outline: none; -webkit-appearance: none; margin-bottom: 2rem; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 25px; height: 25px; border-radius: 50%; background: #fff; cursor: pointer; }
+        button { background: #ffd60a; color: #000; border: none; padding: 1rem; width: 100%; border-radius: 12px; font-weight: 600; font-size: 1rem; }
+        button:active { opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Sunrise</h1>
+        <label>Wake-up Time</label>
+        <input type="time" id="time" value="07:00">
+        <label>Light Tone (Warm to Cool)</label>
+        <input type="range" id="tone" min="0" max="100" value="20" class="slider">
+        <button onclick="save()">Set Alarm</button>
+    </div>
+    <script>
+        function save() {
+            const t = document.getElementById('time').value;
+            const c = document.getElementById('tone').value;
+            fetch(`/save?t=${t}&c=${c}`).then(() => alert("Settings Saved!"));
+        }
+    </script>
+</body>
+</html>

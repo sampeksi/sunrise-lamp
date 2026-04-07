@@ -1,13 +1,13 @@
 [package]
-name = "sunrise-v2"
+name = "sunrise-lamp"
 version = "0.1.0"
-authors = ["suokuism <sampo.suokuisma@nokia.com>"]
+authors = ["sampeksi"]
 edition = "2021"
 resolver = "2"
 rust-version = "1.82"
 
 [[bin]]
-name = "sunrise-v2"
+name = "sunrise-lamp"
 harness = false # do not use the built-in cargo test harness -> resolve rust-analyzer errors
 
 [profile.release]
@@ -23,13 +23,13 @@ esp-idf-svc = { git = "https://github.com/esp-rs/esp-idf-svc.git" }
 
 [dependencies]
 log = "0.4"
+# Features "httpd" and "nvs" are removed; they are now part of the default "std" support
 esp-idf-svc = { version = "0.52.1", features = ["critical-section", "embassy-time-driver", "embassy-sync"] }
-# Remove `generic-queue-8` if you plan to use `embassy-time` WITH `embassy-executor`
 embassy-time = { version = "0.5", features = ["generic-queue-8"] }
 esp-idf-hal = "0.46.2"
-anyhow = "1.0.102"
+anyhow = "1.0"
 embedded-svc = "0.29.0"
-chrono = "0.4.44"
+chrono = "0.4"
 
 [build-dependencies]
 embuild = "0.33"

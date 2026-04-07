@@ -8,8 +8,8 @@ fn main() {
             let key = key.trim();
             let value = value.trim().trim_matches('"');
             // These lines tell the compiler to create an environment variable
-            if key == "wifi_ssid" { println!("cargo:rustc-env=WIFI_SSID={}", value); }
-            if key == "wifi_psk" { println!("cargo:rustc-env=WIFI_PSK={}", value); }
+            if key == "WIFI_SSID" { println!("cargo:rustc-env=WIFI_SSID={}", value); }
+            if key == "WIFI_PSK" { println!("cargo:rustc-env=WIFI_PSK={}", value); }
         }
     }
 
