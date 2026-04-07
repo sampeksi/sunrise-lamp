@@ -29,6 +29,7 @@ embassy-time = { version = "0.5", features = ["generic-queue-8"] }
 esp-idf-hal = "0.46.2"
 anyhow = "1.0.102"
 embedded-svc = "0.29.0"
+chrono = "0.4.44"
 
 [build-dependencies]
 embuild = "0.33"
